@@ -1,0 +1,22 @@
+{
+  "name": "capstone-project-4-blog-web-application",
+  "version": "1.0.0",
+  "description": "A blog web application using EJS, Bootstrap, Express.js with Axios, Node.js, and RapidAPI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanvirgb/Capstone-Project-4-Blog-Web-Application.git"
+  },
+  "author": "Md. Tanvir Siddique Pramanik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanvirgb/Capstone-Project-4-Blog-Web-Application/issues"
+  },
+  "homepage": "https://github.com/tanvirgb/Capstone-Project-4-Blog-Web-Application#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
