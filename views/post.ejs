@@ -1,0 +1,66 @@
+<%- include("partials/header.ejs") %>
+
+    <!-- Start of Post Section -->
+    <section id="post" class="container">
+        <div class="d-flex justify-content-center mb-3 mt-4 text-primary">
+            <h3>All Posts</h3>
+        </div>
+        <div class="row mb-2 min-vh-100">
+            <% if(locals.posts && locals.posts.length> 0) { %>
+                <% posts.forEach(post=> { %>
+                    <div class="col-md-6">
+                        <div
+                            class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary-emphasis">
+                                    <%= post.type %>
+                                </strong>
+                                <div class="mb-1 text-body-secondary">
+                                    <%= post.author %>
+                                </div>
+                                <h3 class="mb-0">
+                                    <%= post.title %>
+                                </h3>
+                                <div class="mb-1 text-body-secondary">
+                                    <%= post.date %>
+                                </div>
+
+                                <% if(post.content.length> 250) { %>
+                                    <p class="card-text mb-auto">
+                                        <%= post.content.slice(0, post.content.lastIndexOf(" ", 250)) %>
+                                        <span class=" collapse" id="post<%= post.id %>">
+                                            <%= post.content.slice(post.content.lastIndexOf(" ", 250)) %>
+                                        </span>
+                                </p>
+
+                                <a href=" #post<%=post.id %>" class="icon-link gap-1 icon-link-hover"
+                                                data-bs-toggle="collapse">
+                                                Continue reading
+                                                <svg class="bi">
+                                                    <use xlink:href="#chevron-right"></use>
+                                                </svg>
+                                                </a>
+                                                <% } else { %>
+                                                    <p class="card-text mb-auto">
+                                                        <%= post.content %>
+                                                    </p>
+                                                    <% } %>
+
+                                                        <div class="mt-5 d-flex justify-content-end">
+                                                            <button type="submit"
+                                                                class="btn btn-success btn-block me-4">Edit</button>
+                                                            <button type="submit"
+                                                                class="btn btn-danger btn-block">Delete</button>
+                                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                        <% } else { %>
+                            <p class="text-center fs-4">No posts found.</p>
+                            <% } %>
+        </div>
+    </section>
+    <!-- End of Post Section -->
+
+    <%- include("partials/footer.ejs") %>

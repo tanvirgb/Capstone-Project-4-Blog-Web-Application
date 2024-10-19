@@ -24,16 +24,27 @@ app.get("/create", (req, res) => {
   res.render("create.ejs");
 });
 
-// app.post("/create", async (req, res) => {
-//   try {
-//     const response = await axios.post(`{API_URL}/api/create`, req.body);
-//     console.log(response.data);
-//     res.redirect("/");
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Error creating a new post");
-//   }
-// });
+app.get("/posts", async (req, res) => {
+  try {
+    const response = await axios.get(`${API_URL}/api/posts`);
+    console.log(response.data);
+    res.render("post.ejs", { posts: response.data });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching posts");
+  }
+});
+
+app.post("/post", async (req, res) => {
+  try {
+    const response = await axios.post(`${API_URL}/api/create`, req.body);
+    console.log(response.data);
+    res.redirect("/");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error creating a new post");
+  }
+});
 
 // Start the server on port 3000 and log a success message.
 app.listen(3000, () => {
