@@ -1,0 +1,49 @@
+<%- include("partials/header.ejs") %>
+
+    <!-- Start of Edit Post Section -->
+    <section id="create" class="container">
+        <div class="d-flex justify-content-center mb-3 mt-4 text-primary">
+            <h3>Edit your post</h3>
+        </div>
+        <div class="card bg-dark-subtle mx-auto">
+            <div class="card-body mt-4">
+                <div class="d-flex flex-column min-vh-100">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <form action="/update/<%= post.id %>" method="post">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput0" class="form-label fw-semibold">Type</label>
+                                    <input name="type" value="<%= post.type %>" type="text" class="form-control"
+                                        id="exampleFormControlInput0"
+                                        placeholder="Write the type of your content here.">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label fw-semibold">Author</label>
+                                    <input name="author" value="<%= post.author %>" type="text" class="form-control"
+                                        id="exampleFormControlInput1" placeholder="Write your name here.">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput2" class="form-label fw-semibold">Title</label>
+                                    <input name="title" value="<%= post.title %>" type="text" class="form-control"
+                                        id="exampleFormControlInput2"
+                                        placeholder="Write the title of your content here.">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlTextarea0"
+                                        class="form-label fw-semibold">Content</label>
+                                    <textarea name="content" class="form-control" id="exampleFormControlTextarea0"
+                                        rows="3" placeholder="Write your post here."><%= post.content %></textarea>
+                                </div>
+                                <div class="mt-5 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-primary btn-block w-25">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of Edit Post Section -->
+
+    <%- include("partials/footer.ejs") %>

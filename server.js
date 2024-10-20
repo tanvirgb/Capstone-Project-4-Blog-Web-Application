@@ -46,6 +46,31 @@ app.post("/post", async (req, res) => {
   }
 });
 
+app.get("/edit/:id", async (req, res) => {
+  try {
+    const response = await axios.get(`${API_URL}/api/edit/${req.params.id}`);
+    console.log(response.data);
+    res.render("edit.ejs", { post: response.data });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error fetching post for editing");
+  }
+});
+
+app.post("/update/:id", async (req, res) => {
+  try {
+    const response = await axios.patch(
+      `${API_URL}/api/update/${req.params.id}`,
+      req.body
+    );
+    console.log(response.data);
+    res.redirect("/posts");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error updating post");
+  }
+});
+
 // Start the server on port 3000 and log a success message.
 app.listen(3000, () => {
   console.log(`Backend server is running on http://localhost:${port}`);
